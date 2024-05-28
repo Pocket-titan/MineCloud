@@ -25,7 +25,7 @@ exports.handler = async (event: any, context: Context) => {
     try {
       const result = await ec2.startInstances({ InstanceIds }).promise();
       console.log('startInstances succeed, result: \n', result);
-      await sendDeferredResponse('OK! Starting the server instance (`･ω･´)~~');
+      await sendDeferredResponse('OK! Starting the server instance');
     } catch (err) {
       console.error(`startInstances error: \n`, err);
       await sendDeferredResponse(
@@ -99,7 +99,7 @@ exports.handler = async (event: any, context: Context) => {
         `Here's the download link for ${latestBackupKey}:\n ${preSignedUrl}`
       );
     } else {
-      await sendDeferredResponse('Hmm... looks like there is no backup yet~');
+      await sendDeferredResponse('Hmm... looks like there is no backup yet');
     }
   }
 

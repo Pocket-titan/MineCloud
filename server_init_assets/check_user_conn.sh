@@ -14,23 +14,20 @@ mcCons=$(get_current_connection_count)
 echo "Active SSH Connections: $sshCons"
 echo "Active Server Connections: $mcCons"
 
-if [ $((mcCons)) = 0 ]
-then
+if [ $((mcCons)) = 0 ]; then
         echo "Checking for SSH connections before shutting down"
-        if [[ $((sshCons)) = 0 ]]
-        then
+        if [[ $((sshCons)) = 0 ]]; then
                 echo "no ssh connections, closing server instace"
-                ./send_discord_message_to_webhook.sh "Hm... there's $mcCons player online now. Shutting down the server instance OwO~"
-		sudo systemctl stop minecloud
+                ./send_discord_message_to_webhook.sh "There's $mcCons player online right now. Shutting down the server instance"
+                sudo systemctl stop minecloud
                 ./auto_backup_checker.sh
-		./send_discord_message_to_webhook.sh "(Server instance stopped)"
-		./send_discord_message_to_webhook.sh "Enjoying MineCloud BOT? If so, please don't hesitate to star it on GitHub and contribute to the project :) ! \n https://github.com/VeriorPies/MineCloud"
-		sudo shutdown
+                ./send_discord_message_to_webhook.sh "(Server instance stopped)"
+                sudo shutdown
         else
                 echo "There are 1 or more active ssh connections, skip termination"
-		./send_discord_message_to_webhook.sh "(There's still $sshCons ssh connection...)"
+                ./send_discord_message_to_webhook.sh "(There's still $sshCons ssh connection, I won't shut down yet)"
         fi
 else
         echo "Somebody is online, do nothing!"
-        ./send_discord_message_to_webhook.sh "Hm... there're $mcCons or more players online now... Come and join Ow<?"
+        ./send_discord_message_to_webhook.sh "There are $mcCons or more players online right now!"
 fi
