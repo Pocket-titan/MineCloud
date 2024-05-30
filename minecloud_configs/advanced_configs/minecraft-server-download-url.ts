@@ -1,2 +1,2 @@
 export const MINECRAFT_SERVER_DOWNLOAD_URL =
-  'https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar';
+  'https://api.papermc.io/v2/projects/paper/versions/1.20.6/builds/126/downloads/paper-1.20.6-126.jar';

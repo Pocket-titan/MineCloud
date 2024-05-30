@@ -11,6 +11,10 @@ new MineCloud(app, STACK_NAME, {
   env: {
     account: AWS_ACCOUNT_ID,
     region: AWS_REGION // or whatever region you use
+  },
+  tags: {
+    StackType: 'MineCloud',
+    StackName: STACK_NAME
   }
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
