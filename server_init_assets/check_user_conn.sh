@@ -17,7 +17,7 @@ echo "Active Server Connections: $mcCons"
 if [ $((mcCons)) = 0 ]; then
         echo "Checking for SSH connections before shutting down"
         if [[ $((sshCons)) = 0 ]]; then
-                echo "no ssh connections, closing server instace"
+                echo "no ssh connections, closing server instance"
                 ./send_discord_message_to_webhook.sh "There's $mcCons player online right now. Shutting down the server instance"
                 sudo systemctl stop minecloud
                 ./auto_backup_checker.sh
